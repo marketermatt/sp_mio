@@ -18,7 +18,9 @@ $image_height = get_option('thumbnail_size_h');
 			if (has_post_thumbnail() && $post_image_url ) { ?>
             <div class="header-meta group">
             <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-				  <img width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="wp-post-image" alt="<?php the_title_attribute(); ?>" src="<?php echo sp_timthumb_format( 'blog_list', $post_image_url, $image_width, $image_height ); ?>" />	
+				  <!--<img width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="wp-post-image" alt="<?php the_title_attribute(); ?>" src="<?php// echo sp_timthumb_format( 'blog_list', $post_image_url, $image_width, $image_height ); ?>" />-->	
+				<?php // context was blog_list for timthumb 310x80
+					echo get_the_post_thumbnail($post->ID, 'thumbnail', array('class' => "wp-post-image $size", 'alt' => trim( strip_tags($attachment->post_title)), 'title' => trim( strip_tags($attachment->post_title)))); ?>
 			<?php } else { ?>
             <div class="header-meta no-image group">
             <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">

@@ -183,69 +183,73 @@ function sp_woo_template_loop_product_thumbnail( $context = 'product_grid' )
 
 		switch ( $context ) :
 			case 'product_grid' :
+				$size = 'shop_catalog';
                 // if less than 2.0
                 if ( version_compare( WOOCOMMERCE_VERSION, '2.0', '<' ) ) {
-                    $image_width = $woocommerce->get_image_size( 'shop_catalog_image_width' );
-                    $image_height = $woocommerce->get_image_size( 'shop_catalog_image_height' );
+                    $image_width = wc_get_image_size( 'shop_catalog_image_width' );
+                    $image_height = wc_get_image_size( 'shop_catalog_image_height' );
                 } else {                    
-                    $catalog_sizes = $woocommerce->get_image_size( 'shop_catalog' );
+                    $catalog_sizes = wc_get_image_size( 'shop_catalog' );
                     $image_width = $catalog_sizes['width'];
-                    $image_height = $catalog_sizes['height'];                    
+                    $image_height = $catalog_sizes['height'];
                 }
 				break;
 				
 			case 'quickview_main' :
+				$size = 'shop_catalog';
                 // if less than 2.0
                 if ( version_compare( WOOCOMMERCE_VERSION, '2.0', '<' ) ) {
-                    $image_width = $woocommerce->get_image_size( 'shop_catalog_image_width' );
-                    $image_height = $woocommerce->get_image_size( 'shop_catalog_image_height' );
+                    $image_width = wc_get_image_size( 'shop_catalog_image_width' );
+                    $image_height = wc_get_image_size( 'shop_catalog_image_height' );
                 } else {                    
-                    $catalog_sizes = $woocommerce->get_image_size( 'shop_catalog' );
+                    $catalog_sizes = wc_get_image_size( 'shop_catalog' );
                     $image_width = $catalog_sizes['width'];
-                    $image_height = $catalog_sizes['height'];                    
+                    $image_height = $catalog_sizes['height'];
                 }
 				break;
 				
 			case 'single_main' :
+				$size = 'shop_single';
                 // if less than 2.0
                 if ( version_compare( WOOCOMMERCE_VERSION, '2.0', '<' ) ) {
-                    $image_width = $woocommerce->get_image_size( 'woocommerce_single_image_width' );
-                    $image_height = $woocommerce->get_image_size( 'woocommerce_single_image_height' );
+                    $image_width = wc_get_image_size( 'woocommerce_single_image_width' );
+                    $image_height = wc_get_image_size( 'woocommerce_single_image_height' );
                 } else {                    
-                    $catalog_sizes = $woocommerce->get_image_size( 'shop_single' );
+                    $catalog_sizes = wc_get_image_size( 'shop_single' );
                     $image_width = $catalog_sizes['width'];
-                    $image_height = $catalog_sizes['height'];                    
+                    $image_height = $catalog_sizes['height'];
                 }
 				break;
 				
 			case 'related_product' :
+				$size = 'shop_catalog';
 				$image_width = sp_get_theme_init_setting( 'woo_related_product_image_size', 'width' );
 				$image_height = sp_get_theme_init_setting( 'woo_related_product_image_size', 'height' );
 				break;
 
 			case 'upsell_product' :
+				$size = 'shop_catalog';
 				$image_width = sp_get_theme_init_setting( 'woo_upsell_product_image_size', 'width' );
-				$image_height = sp_get_theme_init_setting( 'woo_upsell_product_image_size', 'height' );
 				break;
 				
 			default :
+				$size = 'shop_catalog';
                 // if less than 2.0
                 if ( version_compare( WOOCOMMERCE_VERSION, '2.0', '<' ) ) {
-                    $image_width = $woocommerce->get_image_size( 'shop_catalog_image_width' );
-                    $image_height = $woocommerce->get_image_size( 'shop_catalog_image_height' );
+                    $image_width = wc_get_image_size( 'shop_catalog_image_width' );
+                    $image_height = wc_get_image_size( 'shop_catalog_image_height' );
                 } else {                    
-                    $catalog_sizes = $woocommerce->get_image_size( 'shop_catalog' );
+                    $catalog_sizes = wc_get_image_size( 'shop_catalog' );
                     $image_width = $catalog_sizes['width'];
-                    $image_height = $catalog_sizes['height'];                    
+                    $image_height = $catalog_sizes['height'];
                 }
 				break;
 		endswitch;
 		
-	
 		if ( has_post_thumbnail() ) { ?>
-			<img class="product_image" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" src="<?php echo sp_timthumb_format($context, sp_get_image($post->ID), $image_width, $image_height); ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" />	
+			<?php echo get_the_post_thumbnail($post->ID, $size, array('class' => "product_image $size", 'alt' => trim( strip_tags($attachment->post_title)), 'title' => trim( strip_tags($attachment->post_title)))); ?>
 		<?php } else { ?>
-			<img class="no-image" alt="No Image" title="<?php the_title_attribute(); ?>" src="<?php echo sp_timthumb_format($context, get_template_directory_uri().'/images/no-product-image.jpg', $image_width, $image_height); ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" />	
+			<?php echo get_the_post_thumbnail($post->ID, $size, array('src' => get_template_directory_uri().'/images/no-product-image.jpg', 'class' => 'no-image', 'alt' => 'No Image', 'title' => trim( strip_tags($attachment->post_title)))); ?>
 		<?php }
 	
 }
@@ -271,8 +275,8 @@ function sp_woocommerce_subcategory_thumbnail( $category )
 	} else {
 		$image = woocommerce_placeholder_img_src();
 	}
-
-	echo '<img src="' . sp_timthumb_format( 'product_category_image', $image, $image_width, $image_height ) . '" alt="' . $category->name . '" width="' . $image_width . '" height="' . $image_height . '" />';
+	// context was product_image for timthumb
+	echo '<img src="' . $image . '" alt="' . $category->name . '" width="' . $image_width . '" height="' . $image_height . '" />';
 }
 
 // function to display product gallery thumbnails
@@ -310,14 +314,15 @@ function sp_woocommerce_product_gallery( $count = 3 )
     
 					// display the featured image thumbnail first
 					if ( $i <= 1 ) {
-		
-						echo '<img src="'.sp_timthumb_format( 'single_gallery', $featured_image, $image_thumb_width, $image_thumb_height ) .'" alt="'.get_the_title( $attachment->ID ).'" width="'.$image_thumb_width.'" height="'.$image_thumb_height.'" />';
+						// was single_gallery context for timthumb
+						echo '<img src="'. $featured_image .'" alt="'.get_the_title( $attachment->ID ).'" width="'.$image_thumb_width.'" height="'.$image_thumb_height.'" />';
 					} else {
 		
 						if ( get_post_meta( $attachment->ID, '_woocommerce_exclude_image', true ) == 1 ) 
 							continue;
-							
-						echo '<img src="'.sp_timthumb_format( 'single_gallery', $link, $image_thumb_width, $image_thumb_height ) .'" alt="'.get_the_title( $attachment->ID ).'" width="'.$image_thumb_width.'" height="'.$image_thumb_height.'" />';
+						
+						// was single_gallery context for timthumb
+						echo '<img src="'. $link .'" alt="'.get_the_title( $attachment->ID ).'" width="'.$image_thumb_width.'" height="'.$image_thumb_height.'" />';
 					}
 					$i++;
                 }

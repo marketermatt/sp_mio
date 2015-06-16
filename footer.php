@@ -30,7 +30,9 @@ if (class_exists('WP_eCommerce')) {
 					  // Thumbnails, if required
 						  $output .= '<a href="' . wpsc_product_url( $product->ID, null ) . '">';
 
-						   $output .= '<img src="'.sp_timthumb_format( 'footer_menu', sp_get_image( $product->ID ), $image_width, $image_height ).'" title="' . $product->post_title . '" alt="' . $product->post_title . '" /></a>';
+						  // context was footer_menu for timthumb
+						  $output .= '<img src="'. sp_get_image( $product->ID) .'" title="' . $product->post_title . '" alt="' . $product->post_title . '" width="'.$image_width.'" " height="'.$image_height.'" />';
+						  $output .= '</a>/';
 
 					  $output .= '<a href="' . wpsc_product_url( $product->ID, null ) . '" class="more" title="'.__("More Details",'sp').'">'.__("More Details",'sp').' &gt;</a>';
 					  $output .= '</li>';
@@ -54,16 +56,17 @@ if (class_exists('WP_eCommerce')) {
 				  foreach ( $featured_products as $product ) {
 					  $dots = '';
 					  $output .= '<li>';
-					  if (strlen(stripslashes( $product->post_title )) >= 26) { $dots = '...'; } 
-					  $output .= '<a href="' . get_permalink( $product->ID ) . '" title="'.stripslashes( $product->post_title ).'">'.substr(stripslashes( $product->post_title ),0,25).$dots.'</a>';
-					  
-					  // Thumbnails, if required
+						  if (strlen(stripslashes( $product->post_title )) >= 26) { $dots = '...'; } 
+						  $output .= '<a href="' . get_permalink( $product->ID ) . '" title="'.stripslashes( $product->post_title ).'">'.substr(stripslashes( $product->post_title ),0,25).$dots.'</a>';
+						  
+						  // Thumbnails, if required
 						  $output .= '<a href="' . get_permalink( $product->ID ) . '">';
-
-						$output .= '<img src="'.sp_timthumb_format( 'footer_menu', sp_get_image( $product->ID), $image_width, $image_height ).'" title="' . $product->post_title . '" alt="' . $product->post_title . '" /></a>';		
-						 $output .= '</a>';
-
-					  $output .= '<a href="' . get_permalink( $product->ID ) . '" class="more" title="'.__("More Details",'sp').'">'.__("More Details",'sp').' &gt;</a>';
+	
+						  // context was footer_menu for timthumb
+						  $output .= '<img src="'. sp_get_image( $product->ID) .'" title="' . $product->post_title . '" alt="' . $product->post_title . '" width="'.$image_width.'" " height="'.$image_height.'" />';		
+						  $output .= '</a>';
+	
+						  $output .= '<a href="' . get_permalink( $product->ID ) . '" class="more" title="'.__("More Details",'sp').'">'.__("More Details",'sp').' &gt;</a>';
 					  $output .= '</li>';
 				  }
 				  $output .= "</ul>";

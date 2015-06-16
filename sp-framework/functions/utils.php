@@ -546,22 +546,22 @@ function sp_get_image( $id = '' )
  * @param $image_height - height of image
  * @return string
  */
-function sp_timthumb_format( $image_context = '', $image_url = '', $image_width = '', $image_height = '' ) 
-{
-	if ( ! isset( $image_context ) || empty( $image_context ) )
-		return null;
-	
-	$crop = sp_isset_option( $image_context . '_crop', 'value' );
-	$zoomcrop = sp_isset_option( $image_context . '_zoomcrop', 'value' );
-	$compression = sp_isset_option( $image_context . '_compression', 'value' );
-	$sharpening = sp_isset_option( $image_context . '_sharpening', 'value' );
-	$filters = sp_isset_option( $image_context . '_filters', 'value' );
-	$canvas_color = str_replace("#", "", sp_isset_option( $image_context . '_canvas_color', 'value' ) );
-	$png_transparency = sp_isset_option( $image_context . '_png_transparency', 'value' );	
-	
-	return get_template_directory_uri() . '/sp-framework/timthumb/timthumb.php?src=' . $image_url . '&amp;h=' . $image_height . '&amp;w=' . $image_width . '&amp;zc=' . $zoomcrop . '&amp;q=' . $compression . '&amp;a=' . $crop . '&amp;s=' . $sharpening . '&amp;f=' . $filters . '&amp;cc=' . $canvas_color . '&amp;ct=' . $png_transparency;
-	
-}
+// function sp_timthumb_format( $image_context = '', $image_url = '', $image_width = '', $image_height = '' ) 
+// {
+	// if ( ! isset( $image_context ) || empty( $image_context ) )
+		// return null;
+// 	
+	// $crop = sp_isset_option( $image_context . '_crop', 'value' );
+	// $zoomcrop = sp_isset_option( $image_context . '_zoomcrop', 'value' );
+	// $compression = sp_isset_option( $image_context . '_compression', 'value' );
+	// $sharpening = sp_isset_option( $image_context . '_sharpening', 'value' );
+	// $filters = sp_isset_option( $image_context . '_filters', 'value' );
+	// $canvas_color = str_replace("#", "", sp_isset_option( $image_context . '_canvas_color', 'value' ) );
+	// $png_transparency = sp_isset_option( $image_context . '_png_transparency', 'value' );	
+// 	
+	// return get_template_directory_uri() . '/sp-framework/timthumb/timthumb.php?src=' . $image_url . '&amp;h=' . $image_height . '&amp;w=' . $image_width . '&amp;zc=' . $zoomcrop . '&amp;q=' . $compression . '&amp;a=' . $crop . '&amp;s=' . $sharpening . '&amp;f=' . $filters . '&amp;cc=' . $canvas_color . '&amp;ct=' . $png_transparency;
+// 	
+// }
 
 /*
  * function to get the current page's id
