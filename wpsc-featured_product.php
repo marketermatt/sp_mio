@@ -15,10 +15,10 @@ foreach ( $query as $product ) :
         		<?php $image_src = sp_get_image(wpsc_the_product_id()); ?>
  				<?php if ( wpsc_the_product_thumbnail() && $image_src  ) : ?>
                  <div class="featured_item_image">
-                    <img class="product_image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="<?php echo wpsc_the_product_title(); ?>" src="<?php echo sp_timthumb_format( 'featured_product', $image_src, $image_width, $image_height ); ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" />
+                    <?php echo get_the_post_thumbnail( $post->ID, array($image_width,$image_height), array( 'class' => 'product_image', 'id' => 'product_image_'.wpsc_the_product_id()  ) ); ?>
                 </div>
 				<?php else: ?>
-                    <img class="product_image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="<?php echo wpsc_the_product_title(); ?>" src="<?php echo sp_timthumb_format( 'featured_product', get_template_directory_uri().'/images/no-product-image.jpg', $image_width, $image_height ); ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" />
+                    <img class="product_image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="<?php echo wpsc_the_product_title(); ?>" src="<?php echo get_template_directory_uri().'/images/no-product-image.jpg'; ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" />
 				<?php endif; ?>
               
                 <div class="item_text group">

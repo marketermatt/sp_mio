@@ -36,9 +36,11 @@ global $post;
 							$post_image_url = sp_get_image( $product_id );
 							if ( $post_image_url ) {
 						?>
-                                <a href="<?php echo get_permalink($product_id); ?>" title="<?php _e("Buy Now",'sp'); ?>"><img src="<?php echo sp_timthumb_format( 'homepage_slider', $post_image_url, $image_width, $image_height ); ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" alt="<?php _e($product_title,'sp'); ?>" /></a>
+                                <a href="<?php echo get_permalink($product_id); ?>" title="<?php _e("Buy Now",'sp'); ?>">
+                                 <?php echo get_the_post_thumbnail( $product_id, array($image_width,$image_height), array( 'class' => '' ) ); ?>
+                                </a>
                         <?php } else { ?>
-                                <a href="<?php echo get_permalink($product_id); ?>" title="<?php _e("Buy Now",'sp'); ?>"><img src="<?php echo sp_timthumb_format( 'homepage_slider', get_template_directory_uri() . '/images/no-product-image.jpg', $image_width, $image_height ); ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" alt="<?php _e($product_title,'sp'); ?>" /></a>
+                                <a href="<?php echo get_permalink($product_id); ?>" title="<?php _e("Buy Now",'sp'); ?>"><img src="<?php echo get_template_directory_uri() . '/images/no-product-image.jpg'; ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" alt="<?php _e($product_title,'sp'); ?>" /></a>
                         <?php } ?>
                         </div><!--close featured_image-->
                         
@@ -107,9 +109,12 @@ global $post;
 							$post_image_url = sp_get_image( $product_id );
 							if ( $post_image_url ) {
 						?>
-                                <a href="<?php echo get_permalink($product_id); ?>" title="<?php _e("Buy Now",'sp'); ?>"><img src="<?php echo sp_timthumb_format( 'homepage_slider', $post_image_url, $image_width, $image_height ); ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" alt="<?php _e($product_title,'sp'); ?>" /></a>
+                                <a href="<?php echo get_permalink($product_id); ?>" title="<?php _e("Buy Now",'sp'); ?>">
+                                
+                                <?php echo get_the_post_thumbnail( $product_id, array($image_width,$image_height), array( 'class' => '' ) ); ?>
+                                </a>
                         <?php } else { ?>
-                                <a href="<?php echo get_permalink($product_id); ?>" title="<?php _e("Buy Now",'sp'); ?>"><img src="<?php echo sp_timthumb_format( 'homepage_slider', get_template_directory_uri() . '/images/no-product-image.jpg', $image_width, $image_height ); ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" alt="<?php _e($product_title,'sp'); ?>" /></a>
+                                <a href="<?php echo get_permalink($product_id); ?>" title="<?php _e("Buy Now",'sp'); ?>"><img src="<?php echo get_template_directory_uri() . '/images/no-product-image.jpg'; ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" alt="<?php _e($product_title,'sp'); ?>" /></a>
                         <?php } ?>
                         </div><!--close featured_image-->
                         

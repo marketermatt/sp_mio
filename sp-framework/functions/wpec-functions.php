@@ -659,7 +659,7 @@ if ( ! function_exists( 'sp_display_gallery' ) )
 						$image_src = wp_get_attachment_image_src( $post->ID, 'full' );
 	
 						$image .= '<li>';
-						$image .= '<img src="' . sp_timthumb_format( 'slider_mini', $image_src[0], $image_width, $image_height ) . '" width="' . $image_width . '" height="' . $image_height . '" alt="' . $product_name . '" />';
+						$image .= '<img src="' . $image_src[0]. '" width="' . $image_width . '" height="' . $image_height . '" alt="' . $product_name . '" />';
 						
 					$image .= '</li>';
 					} // close for loop
@@ -711,7 +711,7 @@ if ( ! function_exists( 'sp_main_display_gallery' ) )
 				$size = is_single() ? 'full' : 'product-thumbnails'; // change to full by sp
 				$preview_link = wp_get_attachment_image_src( $post->ID, 'full' );
 				$link = wp_get_attachment_link( $post->ID, 'gold-thumbnails' );
-				$link = preg_replace('/src=".*"/', 'src="'.sp_timthumb_format( 'single_gallery', $preview_link[0], $image_width, $image_height ) . '" class="sp-attachment-thumbnails" alt="'. esc_attr( $alt ) . '"', $link ); 
+				$link = preg_replace('/src=".*"/', 'src="'.$preview_link[0]. '" class="sp-attachment-thumbnails" alt="'. esc_attr( $alt ) . '"', $link ); 
 				$link = preg_replace( '/width="[0-9]*"\sheight="[0-9]*"/', 'width="' . $image_width . '" height="' . $image_height . '"', $link );
 			// custom SP
 			global $wp_query;
@@ -728,9 +728,9 @@ if ( ! function_exists( 'sp_main_display_gallery' ) )
 					$image_height = get_option( 'single_view_image_height' );
 					$image_width = get_option( 'single_view_image_width' );
 														
-				$link = str_replace( 'a href' , 'a data-src="'.sp_timthumb_format( 'single_main', $preview_link[0], $image_width, $main_image_height ) . '" class="thickbox preview_link" onclick="return false" data-rel="prettyPhoto[' . $product_id . ']" href' , $link );
+				$link = str_replace( 'a href' , 'a data-src="'.$preview_link[0]. '" class="thickbox preview_link" onclick="return false" data-rel="prettyPhoto[' . $product_id . ']" href' , $link );
 				} else {
-				$link = str_replace( 'a href' , 'a data-src="'.sp_timthumb_format( 'quickview_main', $preview_link[0], $image_width, $main_image_height ) . '" class="thickbox preview_link" onclick="return false" data-rel="prettyPhoto[' . $product_id . ']" href' , $link );
+				$link = str_replace( 'a href' , 'a data-src="'.$preview_link[0]. '" class="thickbox preview_link" onclick="return false" data-rel="prettyPhoto[' . $product_id . ']" href' , $link );
 				}
 		} else {
 			$link = str_replace( 'a href' , 'a data-src="' . $preview_link[0] . '" class="thickbox preview_link" data-rel="prettyPhoto[' . $product_id . ']" href' , str_replace( 'sp-attachment-thumbnails', '', $link ) );

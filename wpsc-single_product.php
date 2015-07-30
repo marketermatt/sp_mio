@@ -33,7 +33,7 @@ wpsc_output_breadcrumbs($args); ?>
                     
 						<?php if ( wpsc_the_product_thumbnail() ) : ?>
 								<a data-rel="prettyPhoto[<?php echo wpsc_the_product_id(); ?>]" class="product-image <?php echo wpsc_the_product_image_link_classes(); ?>" href="<?php echo wpsc_the_product_image(); ?>" title="<?php echo wpsc_the_product_title(); ?>" data-id="<?php echo wpsc_the_product_id(); ?>">
-									<img width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="product_image" alt="<?php echo wpsc_the_product_title(); ?>" src="<?php echo sp_timthumb_format( 'single_main', sp_get_image(wpsc_the_product_id()), $image_width, $image_height); ?>" />
+									<?php echo get_the_post_thumbnail( wpsc_the_product_id(), array($image_width,$image_height), array( 'class' => 'product_image' ) ); ?>
                         	<img title="Loading" alt="Loading" src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif" class="load loading-<?php echo wpsc_the_product_id(); ?>" />                                
                                     
 								</a>
@@ -44,7 +44,7 @@ wpsc_output_breadcrumbs($args); ?>
 								?>
 						<?php else: ?>
 								<a data-rel="prettyPhoto[<?php echo wpsc_the_product_id(); ?>]" class="product-image <?php echo wpsc_the_product_image_link_classes(); ?>" href="<?php echo get_template_directory_uri(); ?>/images/no-product-image.jpg" title="<?php echo wpsc_the_product_title(); ?>" data-id="<?php echo wpsc_the_product_id(); ?>">
-									<img class="no-image" alt="No Image" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo sp_timthumb_format( 'single_main', get_template_directory_uri().'/images/no-product-image.jpg', $image_width, $image_height); ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" />
+									<img class="no-image" alt="No Image" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo get_template_directory_uri().'/images/no-product-image.jpg'; ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" />
                         	<img title="Loading" alt="Loading" src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif" class="load loading-<?php echo wpsc_the_product_id(); ?>" />                                
                                     
 								</a>

@@ -34,12 +34,12 @@ function sp_wpsc_also_bought( $product_id ) {
 				if ( sp_check_ms_image(wpsc_the_product_thumbnail(96,96,$also_bought_data['ID']))) {
 					$output .= "<a href='" . get_permalink($also_bought_data['ID']) . "' class=''  data-rel='" . str_replace( " ", "_", get_the_title($also_bought_data['ID']) ) . "'>";
 					$image_src = sp_wpsc_the_product_image($also_bought_data['ID']);
-					$output .= '<img src="'.sp_timthumb_format('also_bought', $image_src, $image_width, $image_height ).'" class="product_image" alt="'.get_the_title($also_bought_data['ID']).'">';
+					$output .= get_the_post_thumbnail( $also_bought_data['ID'], array($image_width,$image_height), array( 'class' => 'product_image' ) );
 					$output .= "</a>";
 				} else {
 					$output .= "<a href='" . get_permalink($also_bought_data['ID']) . "' class=''  data-rel='" . str_replace( " ", "_", get_the_title($also_bought_data['ID']) ) . "'>";
 					$image_src = sp_wpsc_the_product_image($also_bought_data['ID']);
-					$output .= '<img src="'.sp_timthumb_format( 'also_bought', get_template_directory_uri().'/images/no-product-image.jpg', $image_width, $image_height ).'" class="product_image" alt="'.get_the_title($also_bought_data['ID']).'">';
+					$output .= '<img src="'.get_template_directory_uri().'/images/no-product-image.jpg" class="product_image" alt="'.get_the_title($also_bought_data['ID']).'">';
 					$output .= "</a>";
 				}
 			}

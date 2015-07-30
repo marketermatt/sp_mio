@@ -641,3 +641,14 @@ background: -o-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ *
 background: -ms-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* IE10+ */
 background: linear-gradient(to bottom,  #ffffff 0%,#e5e5e5 100%); /* W3C */
 border:1px solid #ddd;margin-top:20px;}
+
+.cart_totals  table{ width:100% !important;}
+.shipping_calculator{ width:70%!important;}
+ .form-row-last{ float:left!important;}
+.shipping-calculator-form{  float: right!important; width: 70%!important;}
+.shipping-calculator-form .button{ margin-top:12px!important;}
+.cart_totals  .wc-proceed-to-checkout a.checkout-button{ display:none!important;}
+
+
+
+

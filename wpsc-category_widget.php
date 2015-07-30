@@ -16,7 +16,7 @@
 						ob_start();
 						sp_check_ms_image(wpsc_parent_category_image( $show_thumbnails, $category_image , $width, $height, false, $show_name ));
 						$content = ob_get_clean();
-						$image = preg_replace('/<.*/','<img src="'.sp_timthumb_format( 'product_category_widget', sp_check_ms_image($category_image)).'" alt="'.$curr_cat['name'].'" />', $content);
+						$image = preg_replace('/<.*/',wp_get_attachment_image( $curr_cat['term_id'], array($width,$height,true), $icon, array( 'alt' => $curr_cat['name'] )), $content);
 						echo $image;
 		?></a>
 
@@ -29,7 +29,7 @@
 						ob_start();
 						sp_check_ms_image(wpsc_parent_category_image( $show_thumbnails, $category_image , $width, $height, false, $show_name ));
 						$content = ob_get_clean();
-						$image = preg_replace('/<.*/','<img src="'.sp_timthumb_format( 'product_category_widget', sp_check_ms_image($category_image), $width, $height).'" alt="'.$curr_cat['name'].'" />', $content);
+						$image = preg_replace('/<.*/',wp_get_attachment_image( $curr_cat['term_id'], array($width,$height,true), $icon, array( 'alt' => $curr_cat['name'] )), $content);
 						echo $image;
 						?></a>
 					<?php } ?>

@@ -1102,3 +1102,5 @@ div.uploader{position:relative;overflow:hidden;cursor:default}
 div.uploader span.action{float:left;display:inline;padding:2px 0;overflow:hidden;cursor:pointer}
 div.uploader span.filename{padding:0 10px;float:left;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:default}
 div.uploader input{opacity:0;filter:alpha(opacity:0);position:absolute;top:0;right:0;bottom:0;float:right;height:25px;border:none;cursor:default}
+
+div.summary { width:94% !important;}

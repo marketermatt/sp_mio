@@ -97,7 +97,7 @@ if ( sp_isset_option( 'facebook_opengraph', 'boolean', 'true' ) && ( class_exist
 							$logo_url = sp_isset_option( 'logo_image', 'value' );
 							if (is_ssl())
 								$logo_url = str_replace('http', 'https', $logo_url); 
-							echo '<img src="'.$logo_url.'" alt="'.sp_isset_option( 'logo_alt_text', 'value' ).'" />';
+							echo '<img src="'.$logo_url.'" alt="'.sp_isset_option( 'logo_alt_text', 'value' ).'" width="80" />';
 						} else {
 							if (sp_isset_option( 'skins', 'boolean', '1')) {
 								echo '<img src="'.get_template_directory_uri().'/images/logo.png" alt="'.sp_isset_option( 'logo_alt_text', 'value' ).'" />';

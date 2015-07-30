@@ -13,7 +13,7 @@ $cat_image_height = sp_get_theme_init_setting('wpec_product_category_size', 'hei
 					<div class="item_image">
 				<?php if(wpsc_the_product_thumbnail()) :?> 	   
 						<a title="<?php echo wpsc_the_product_title(); ?>" href="<?php echo wpsc_the_product_permalink(); ?>">
-						<img class="product_image" alt="<?php echo wpsc_the_product_title(); ?>" src="<?php echo sp_timthumb_format( 'product_grid', sp_get_image( wpsc_the_product_id()), $image_width, $image_height); ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" />
+						 <?php echo get_the_post_thumbnail( wpsc_the_product_id(), array($image_width,$image_height), array( 'class' => 'product_image' ) ); ?>
 						</a>
                             <?php if (wpsc_product_on_special() && sp_isset_option( 'saletag', 'boolean', 'true' )) : ?>
                             <span class="saletag"></span>
@@ -21,7 +21,7 @@ $cat_image_height = sp_get_theme_init_setting('wpec_product_category_size', 'hei
                         
 				<?php else: ?> 
 						<a title="<?php echo wpsc_the_product_title(); ?>" href="<?php echo wpsc_the_product_permalink(); ?>">
-						<img class="no-image" alt="<?php echo wpsc_the_product_title(); ?>" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo sp_timthumb_format( 'product_grid', get_template_directory_uri() . '/images/no-product-image.jpg', $image_width, $image_height ); ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" />
+						<img class="no-image" alt="<?php echo wpsc_the_product_title(); ?>" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo  get_template_directory_uri() . '/images/no-product-image.jpg'; ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" />
 						</a>
                             <?php if (wpsc_product_on_special() && sp_isset_option( 'saletag', 'boolean', 'true' )) : ?>
                             <span class="saletag"></span>

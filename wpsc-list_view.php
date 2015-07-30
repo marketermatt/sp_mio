@@ -60,7 +60,7 @@ if (sp_isset_option( 'product_view_buttons', 'boolean', 'true' )) {
 		<?php if ((get_option('wpsc_category_description') || get_option('show_category_thumbnails')) && (sp_check_ms_image(wpsc_category_image()) || wpsc_category_description()) ) { ?>
             <div class="wpsc_category_details group">
                 <?php if(get_option('show_category_thumbnails') && sp_check_ms_image( wpsc_category_image() )) : ?>
-                    <img src="<?php echo sp_timthumb_format( 'product_category_image', sp_check_ms_image( wpsc_category_image() ), $cat_image_width, $cat_image_height ); ?>" width="<?php echo $cat_image_width; ?>" height="<?php echo $cat_image_height; ?>" alt="<?php echo wpsc_category_name(); ?>" />
+                    <?php echo get_the_post_thumbnail( $post->ID, array($cat_image_width,$cat_image_height), array( 'class' => '' ) ); ?>
                 <?php endif; ?>
                 
                 <?php if(get_option('wpsc_category_description') &&  wpsc_category_description()) : ?>

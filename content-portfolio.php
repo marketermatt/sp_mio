@@ -100,7 +100,7 @@ $layout = sp_page_layout();
                             
                             <div class="image-wrap gallery-only">
                             <a href="<?php echo $post_image_url; ?>" title="<?php the_title_attribute(); ?>" class="post-image-link thickbox preview_link" data-rel="prettyPhoto[<?php echo $post->ID; ?>]">
-                            <img width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="wp-post-image" alt="<?php the_title_attribute(); ?>" src="<?php echo sp_timthumb_format( 'portfolio_listing', $post_image_url, $image_width, $image_height ); ?>" />	
+                            <?php echo get_the_post_thumbnail( $post->ID, array($image_width,$image_height), array( 'class' => 'wp-post-image' ) ); ?>	
                             <span class="hover-icon">&nbsp;</span></a>
                             </div><!--close image-wrap-->  
                              
@@ -108,7 +108,7 @@ $layout = sp_page_layout();
                             
                             <div class="image-wrap">                            
                             <a href="<?php the_permalink(); ?>" title="<?php _e('Read More', 'sp'); ?>" class="post-image-link">
-                            <img width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="wp-post-image" alt="<?php the_title_attribute(); ?>" src="<?php echo sp_timthumb_format( 'portfolio_listing', $post_image_url, $image_width, $image_height ); ?>" />	
+                            <?php echo get_the_post_thumbnail( $post->ID, array($image_width,$image_height), array( 'class' => 'wp-post-image' ) ); ?>	
                             <span class="hover-icon">&nbsp;</span></a>
                             </div><!--close image-wrap-->   
 					  <?php } // end gallery only check ?> 
@@ -118,7 +118,7 @@ $layout = sp_page_layout();
                             
                             <div class="image-wrap no-image gallery-only">
                             <a href="<?php echo get_template_directory_uri(); ?>/images/no-product-image.jpg" title="<?php the_title_attribute(); ?>" class="post-image-link thickbox preview_link" data-rel="prettyPhoto[<?php echo $post->ID; ?>]">
-                            <img width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="wp-post-image" alt="<?php the_title_attribute(); ?>" src="<?php echo sp_timthumb_format( 'portfolio_listing', get_template_directory_uri().'/images/no-product-image.jpg', $image_width, $image_height ); ?>" />	
+                            <img width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="wp-post-image" alt="<?php the_title_attribute(); ?>" src="<?php echo get_template_directory_uri().'/images/no-product-image.jpg'; ?>" />	
                             <span class="hover-icon">&nbsp;</span></a>
                             </div><!--close image-wrap-->   
                             
@@ -126,7 +126,7 @@ $layout = sp_page_layout();
                             
                             <div class="image-wrap no-image">
                             <a href="<?php the_permalink(); ?>" title="<?php _e('Read More', 'sp'); ?>" class="post-image-link">
-                            <img width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="wp-post-image" alt="<?php the_title_attribute(); ?>" src="<?php echo sp_timthumb_format( 'portfolio_listing', get_template_directory_uri().'/images/no-product-image.jpg', $image_width, $image_height ); ?>" />	
+                            <img width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="wp-post-image" alt="<?php the_title_attribute(); ?>" src="<?php echo get_template_directory_uri().'/images/no-product-image.jpg'; ?>" />	
                             <span class="hover-icon">&nbsp;</span></a>
                             </div><!--close image-wrap-->   
                             

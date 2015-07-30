@@ -238,10 +238,10 @@ function sp_related_post() {
 				$post_image_url = sp_get_image( $post->ID );
 				if (has_post_thumbnail() && $post_image_url) {
 			?>
-				<li><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" class="post-image-link"><img width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="wp-post-image" alt="<?php the_title_attribute(); ?>" src="<?php echo sp_timthumb_format( 'blog_related', $post_image_url, $image_width, $image_height ); ?>" /><?php the_title(); ?></a></li>
+				<li><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" class="post-image-link"> <?php echo get_the_post_thumbnail( $post->ID, array($image_width,$image_height), array( 'class' => 'wp-post-image' ) ); ?><?php the_title(); ?></a></li>
 			<?php
 				} else { ?>
-				<li><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" class="post-image-link"><img width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="wp-post-image" alt="<?php the_title_attribute(); ?>" src="<?php echo sp_timthumb_format( 'blog_related', get_template_directory_uri().'/images/no-product-image.jpg', $image_width, $image_height ); ?>" /><?php the_title(); ?></a></li>
+				<li><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" class="post-image-link"><img width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="wp-post-image" alt="<?php the_title_attribute(); ?>" src="<?php echo get_template_directory_uri().'/images/no-product-image.jpg'; ?>" /><?php the_title(); ?></a></li>
 				<?php
                 }
 			endwhile;
