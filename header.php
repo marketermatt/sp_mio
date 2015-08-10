@@ -79,6 +79,9 @@ if ( sp_isset_option( 'facebook_opengraph', 'boolean', 'true' ) && ( class_exist
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<script src="<?php bloginfo('template_url'); ?>/js/1.11.3.jquery.min.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/custom.js"></script>
+<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' );?>
 <?php wp_head(); ?>
 </head>
 

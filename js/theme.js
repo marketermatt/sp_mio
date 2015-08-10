@@ -1713,37 +1713,6 @@ jQuery( document ).ready( function( $ )
 
 				});
 				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-				// variation image swap function
-				function sp_variation_image_swap(product_id, var_ids) {
-					var $image_element = jQuery("a[data-id="+product_id+"]").find("img.product_image");
-					var $timthumb_options = $image_element.attr('src');
-					$timthumb_options = $timthumb_options.match('&.*');
-					
-					var $data = {
-					action: "sp_variation_image_swap",
-					product_id: product_id,
-					var_ids: var_ids,
-					ajaxCustomNonce : sp_custom.ajaxCustomNonce
-					};
-					jQuery.post(sp_custom.ajaxurl, $data, function(response) {
-						response = jQuery.parseJSON(response);
-						jQuery('img.loading-'+product_id).hide();
-						if (response) { 
-							$image_element.parent('.preview_link').attr('href',response.image_src);
-							$image_element.fadeTo('fast',0, function() {
-								var newImage = $('<img src="' + sp_custom.framework_url+'timthumb/timthumb.php?src='+response.image_src+$timthumb_options + '">'); // used to preload the new swapped image to prevent stutter
-								$( newImage ).load( function()
-								{ 
-									$image_element.attr("src", sp_custom.framework_url+'timthumb/timthumb.php?src='+response.image_src+$timthumb_options).fadeTo('fast',1).attr("alt", response.image_alt).parent('.preview_link').attr('title', response.image_alt);
-									
-							    });
-							});
-						} else {
-							$image_element.fadeTo('fast',1);	
-						}
-					}); 
-				}
-				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					// update price when variation changes
 					jQuery(".wpsc_select_variation_ajax").live('change', function() {
 						jQuery('option[value="0"]', this).attr('disabled', 'disabled');

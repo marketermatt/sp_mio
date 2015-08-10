@@ -43,7 +43,7 @@ body {font:0.813em/1.65em Arial, Helvetica, sans-serif; background:url(images/si
 .container {width:960px;margin:0 auto;position:relative;}
 .container:after {content:" ";display:block;height:0;clear:both;visibility:hidden;}
 small {font-size:0.7em;}
-h1,h2,h3,h4,h5,h6 {color:#6d6d6d; margin-bottom:20px; margin-top:10px; text-shadow:1px 1px 1px rgba(0,0,0,0.2);}
+h1,h2,h3,h4,h5,h6 {text-align:center;color:#6d6d6d; margin-bottom:20px; margin-top:10px; text-shadow:1px 1px 1px rgba(0,0,0,0.2);}
 h1 {font-size:1.5em;}
 h2 {font-size:1.4em;}
 h3 {font-size:1.3em;}
@@ -758,7 +758,7 @@ footer#footer {clear:both;}
 .footer_blog a:hover,.footer_blog a:active,.footer_featured a:hover,.footer_featured a:active,.footer_featured a.more:hover,.footer_featured a.more:active{color:#666;}
 /* CONTACT FORM 7 STYLES */
 div.wpcf7 {margin-bottom:20px;}
-.wpcf7-form input[type=text], .wpcf7-form textarea {border-radius:5px;border:1px solid #999;padding:5px;position:relative;}
+.wpcf7-form input[type=text], .wpcf7-form input[type=email], .wpcf7-form textarea {border-radius:5px;border:1px solid #999;padding:5px;position:relative;}
 .wpcf7-form .wpcf7-form-control-wrap {position:relative;display:block;}
 .wpcf7-form .ajax-loader {margin-left:5px;position:relative;top:4px;}
 .wpcf7-form span.wpcf7-not-valid-tip {color:red;position:absolute;left:5px;top:3px;}

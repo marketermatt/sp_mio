@@ -227,22 +227,6 @@ jQuery( document ).ready( function( $ )
 				}
 			});
 		
-			// empty timthumb cache folder
-			jQuery('#sp-panel .clear_cache').click(function(e) {
-				e.preventDefault();
-				var reply = confirm( sp_theme.reset_cache_msg );
-				if (reply) {
-					show_alert();
-					var $data = {
-					action: "sp_clear_cache_ajax",
-					ajaxCustomNonce : sp_theme.ajaxCustomNonce
-					};
-					jQuery.post(sp_theme.ajaxurl, $data, function(response) {
-							hide_alert(response);
-					}); 
-				}
-			});
-		
 			// clear product star ratings
 			jQuery('#sp-panel .clear_star_ratings').click(function(e) {
 				e.preventDefault();

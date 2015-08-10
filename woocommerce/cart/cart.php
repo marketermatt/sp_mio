@@ -110,7 +110,7 @@ global $woocommerce;
 									$data_max = ( $_product->backorders_allowed() ) ? '' : $_product->get_stock_quantity();
 									$data_max = apply_filters( 'woocommerce_cart_item_data_max', $data_max, $_product ); 
 									
-									$product_quantity = sprintf( '<div class="quantity"><input name="cart[%s][qty]" data-min="%s" data-max="%s" value="%s" size="4" title="Qty" class="input-text qty text" maxlength="12" /></div>', $cart_item_key, $data_min, $data_max, esc_attr( $values['quantity'] ) );
+									$product_quantity = sprintf( '<div class="quantity buttons_added"><input type="button" class="minus" value="-"><input name="cart[%s][qty]" data-min="%s" data-max="%s" value="%s" size="4" title="Qty" class="input-text qty text" maxlength="12" /><input type="button" class="plus" value="+"></div>', $cart_item_key, $data_min, $data_max, esc_attr( $values['quantity'] ) );
 								}
 								
 								echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key ); 					
@@ -147,6 +147,7 @@ global $woocommerce;
 				<input type="submit" class="update button" name="update_cart" value="<?php _e('Update Cart', 'sp'); ?>" /> 
 				
 				<?php wp_nonce_field('cart') ?>
+				<?php wp_nonce_field( 'woocommerce-cart' ); ?>
 			</td>
 		</tr>
 		
@@ -155,13 +156,34 @@ global $woocommerce;
 </table>
 <?php do_action( 'woocommerce_after_cart_table' ); ?>
 </form>
+<script>
+jQuery( document ).ready(function($) { 
+  $('.plus').live('click',function(){
+  var plus=$(this).prev().val();
+      plus=parseInt(plus)+1;
+      $(this).prev().val(plus);
+      //alert(plus);
+  }); 
+  
+  $('.minus').live('click',function(){
+  var minus=$(this).next().val();
+      if(minus>1) {
+      minus=parseInt(minus)-1;
+      $(this).next().val(minus);
+	  }
+      //alert(minus);
+  });
+  
+});
+
+</script>
 <div class="cart-collaterals group">
 	
 	<?php do_action('woocommerce_cart_collaterals'); ?>
 	
 	<?php //woocommerce_cart_totals(); ?>
 	
-	<?php //woocommerce_shipping_calculator(); ?>
+	<?php woocommerce_shipping_calculator(); ?>
     <a href="<?php echo esc_url( $woocommerce->cart->get_checkout_url() ); ?>" class="checkout-button alt"><span><?php _e('Proceed to Checkout &rarr;', 'sp'); ?></span></a>
     <?php //do_action('woocommerce_proceed_to_checkout'); ?>
 	

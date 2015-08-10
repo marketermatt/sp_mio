@@ -275,30 +275,6 @@ if ( ! function_exists( 'sp_variation_image_swap' ) )
 	}
 }
 
-// get checkout cart image to show proper image when variation of product is selected
-if ( ! function_exists( 'sp_cart_item_image' ) )
-{
-	function sp_cart_item_image( $id, $image_width = 50, $image_height = 50 ) 
-	{
-		global $blog_id, $wpdb; 
-
-		// get the variation image
-		$attach_id = get_post_meta( $id, '_thumbnail_id', true ); 
-		$image = wp_get_attachment_image_src( $attach_id, 'full' ); //return '+++++'.$id.'++++++';
-		if ( $image ) 
-		{ 
-		  $image = $image[0];  
-		  $image = FRAMEWORK_URL . 'timthumb/timthumb.php?src=' . $image . '&amp;w=' . $image_width . '&amp;h=' . $image_height . '&amp;zc=1&amp;q=90&amp;a=c';
-		} 
-		else 
-		{
-		  $image = wpsc_cart_item_image( $image_width, $image_height );  
-		}
-		
-		return $image;
-	}
-}
-
 if ( ! function_exists( 'sp_wpsc_product_variation_price_available' ) )
 {
 	function sp_wpsc_product_variation_price_available( $product_id )

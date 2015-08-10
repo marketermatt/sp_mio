@@ -115,67 +115,6 @@ function sp_theme_reset()
 	exit;
 }
 
-/**
- * empty timthumb cache folder
- *
- */
-function sp_clear_cache_ajax() 
-{
-	$nonce = $_POST['ajaxCustomNonce'];
-	if ( ! wp_verify_nonce( $nonce, 'ajax_custom_nonce' ) ) 
-	{
-	     die( 'errors' );
-	}
-    $path = get_template_directory() . '/sp-framework/timthumb/cache/';
- 	if ( $handle = @opendir( $path ) ) 
-	{
-          while ( false !== ( $file = readdir( $handle ) ) ) 
-		  {
-               if ( $file != "." && $file != ".." ) 
-			   {
-               		// If it's a file, delete it
-               		if ( is_file( $path . "/" . $file ) ) 
-					{ 
-                    	if ( unlink( $path . "/" . $file ) ) 
-						{
-                    		$output = 'done';     
-                    	}
-               		} 
-					else 
-					{
-                    	// It's a directory...
-                    	// crawl through the directory and delete the contents               
-                    	if ( $handle2 = opendir( $path . "/" . $file ) ) 
-						{
-                        	while ( false !== ( $file2 = readdir( $handle2 ) ) ) 
-							{
-								if ( $file2 != "." && $file2 != ".." ) 
-								{
-								   if ( unlink( $path . "/" . $file . "/" . $file2 ) ) 
-								   {
-										$output = 'done';    
-								   }
-								}
-                         	}
-                    	}
-                    	if( rmdir( $path . "/" . $file ) ) 
-						{
-                    		$output = 'done';     
-                    	}
-               		}
-               }
-          }
-		 closedir( $handle );
-		 $output = 'done';
-     } 
-	 else 
-	 {
-		$output = 'errors'; 
-	 } 
-	 
-	echo $output;
-    exit;
-}
 
 /**
  * empty all product star ratings

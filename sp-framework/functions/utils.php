@@ -43,7 +43,7 @@ function sp_check_version()
 		}
 		else 
 		{
-			$theme = get_theme_data( get_template_directory() . '/style.css' ); // deprecated function since 3.4
+			$theme = wp_get_theme( get_template_directory() . '/style.css' ); // deprecated function since 3.4
 		}
 
 		if ( is_array( $versions['versions'] ) ) 
@@ -58,7 +58,7 @@ function sp_check_version()
 					if ( $theme['Version'] < $cur ) 
 					{
 						// build the notification HTML to display above SP theme control panel
-						$notification .= '<p class="update">' . sprintf( __( 'There is a new version of your theme available (' . '%s' . '). Please visit', 'sp' ), $item['value'] ) . ' <a href="' . esc_url( 'http://splashingpixels.com/my-account/' ) . '" title="Splashing Pixels" target="_blank">Splashing Pixels</a> to download. If your theme is not listed, please <a href="' . esc_url( 'http://splashingpixels.com/member-dashboard/' ) . '">contact support</a>.  <a href="' . esc_url( 'http://splashingpixels.com/wp-content/themes/sp/versions/' . strtolower( trim( $spthemeinfo['Name'] ) ) . '_changelog.txt' ) . '" title="Theme Changelog" target="_blank">(ChangeLog)</a>  (' . __( 'To disable this message permanently', 'sp' ) . ' <a href="#" class="hide_msg" title="Hide Message">' . __( 'click here', 'sp' ) . '</a>)</p>';
+						$notification .= '<p class="update">' . sprintf( __( 'There is a new version of your theme available (' . '%s' . '). Please visit', 'sp' ), $item['value'] ) . ' <a href="' . esc_url( 'http://splashingpixels.com/my-account/' ) . '" title="Splashing Pixels" target="_blank">Splashing Pixels</a> to download. If your theme is not listed, please <a href="' . esc_url( 'http://splashingpixels.com/my-account/' ) . '">contact support</a>.  <a href="' . esc_url( 'http://splashingpixels.com/wp-content/themes/sp/versions/' . strtolower( trim( $spthemeinfo['Name'] ) ) . '_changelog.txt' ) . '" title="Theme Changelog" target="_blank">(ChangeLog)</a>  (' . __( 'To disable this message permanently', 'sp' ) . ' <a href="#" class="hide_msg" title="Hide Message">' . __( 'click here', 'sp' ) . '</a>)</p>';
 					}
 				}
 				if ( $item['_attr']['name'] == 'framework' ) 
@@ -535,33 +535,6 @@ function sp_get_image( $id = '' )
 		return get_template_directory_uri() . '/images/no-product-image.jpg';	
 	}
 }
-
-/* 
- * function to format timthumb attribute string
- *
- * @since 2.1.1 
- * @param $image_context - location of image relative to site
- * @param $image_url - url of image location as source
- * @param $image_width - width of image
- * @param $image_height - height of image
- * @return string
- */
-// function sp_timthumb_format( $image_context = '', $image_url = '', $image_width = '', $image_height = '' ) 
-// {
-	// if ( ! isset( $image_context ) || empty( $image_context ) )
-		// return null;
-// 	
-	// $crop = sp_isset_option( $image_context . '_crop', 'value' );
-	// $zoomcrop = sp_isset_option( $image_context . '_zoomcrop', 'value' );
-	// $compression = sp_isset_option( $image_context . '_compression', 'value' );
-	// $sharpening = sp_isset_option( $image_context . '_sharpening', 'value' );
-	// $filters = sp_isset_option( $image_context . '_filters', 'value' );
-	// $canvas_color = str_replace("#", "", sp_isset_option( $image_context . '_canvas_color', 'value' ) );
-	// $png_transparency = sp_isset_option( $image_context . '_png_transparency', 'value' );	
-// 	
-	// return get_template_directory_uri() . '/sp-framework/timthumb/timthumb.php?src=' . $image_url . '&amp;h=' . $image_height . '&amp;w=' . $image_width . '&amp;zc=' . $zoomcrop . '&amp;q=' . $compression . '&amp;a=' . $crop . '&amp;s=' . $sharpening . '&amp;f=' . $filters . '&amp;cc=' . $canvas_color . '&amp;ct=' . $png_transparency;
-// 	
-// }
 
 /*
  * function to get the current page's id
