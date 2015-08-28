@@ -2,7 +2,7 @@
 /**
  * Single Product Share
  * @package 	WooCommerce/Templates
- * @version     1.6.4
+ * @version     2.4.0
  *
  * Sharing plugins can hook into here or you can add your own code directly.
  */

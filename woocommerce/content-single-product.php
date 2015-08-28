@@ -5,7 +5,7 @@
  * Override this template by copying it to yourtheme/woocommerce/content-single-product.php
  *
  * @package 	WooCommerce/Templates
- * @version     1.6.4
+ * @version     2.4.0
  * @todo prepend class names with wc-
  */
 ?>
