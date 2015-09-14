@@ -110,7 +110,7 @@ function sp_admin_menu()
 {
 		global $spthemeinfo;		
 		
-		add_theme_page( 'sp', $spthemeinfo['Name'], 'manage_options', 'sp', 'sp_panel', trailingslashit( FRAMEWORK_URL ) . 'images/favicon.png', 56);
+		add_menu_page( 'sp', $spthemeinfo['Name'], 'manage_options', 'sp', 'sp_panel', trailingslashit( FRAMEWORK_URL ) . 'images/favicon.png', 56);
 		add_submenu_page( 'sp', $spthemeinfo['Name'], 'Theme Settings', 'manage_options', 'sp', 'sp_panel' );			
 }
 
@@ -151,7 +151,8 @@ function sp_panel()
 							{ ?>
                             <li class="woo"><a href="#woo" title="WooCommerce Settings">WOO<br /><span><?php _e( 'settings', 'sp' ); ?></span></a></li>
                             <?php } ?>
-                            <li class="help"><a href="#help" title="Help"><?php _e( 'HELP?', 'sp' ); ?></a></li>
+                            <li  class="help"><a href="#help" title="Help"><?php _e( 'HELP?', 'sp' ); ?></a></li>
+							<li style="border-right: 1px solid #ccc;" class="offers"><a href="#offers" title="Offers"><?php _e( 'OFFERS', 'sp' ); ?></a></li>
                         </ul><!--close tabs-->
                     </div><!--close nav-->
                     <div id="header-meta" class="group">
@@ -474,10 +475,9 @@ function sp_panel()
 											}
 										}
 										if ( isset( $wrapper['_attr']['title'] ) ) 
-										{ 
-											echo '<a href="'.esc_url( __('http://www.splashingpixels.com/my-account/', 'sp')).'" target="_blank">' . __( 'For more support, please go to our site support forums.', 'sp' ) . '</a>';
-											
-											echo '</fieldset>' . "\r\n"; 
+										{
+											echo '<a href="http://splashingpixels.com/member-dashboard/" title="Splashing Pixels" target="_blank">' . __( 'For more support, please go to our site support forums.', 'sp' ) . '</a>';
+											echo '</fieldset>' . "\r\n";
 										}	
 									} // end 2nd foreach loop
 								} 
@@ -489,10 +489,40 @@ function sp_panel()
 						} // end 1st foreach loop
 					?>
                 </div><!--close help-->
+			<div id="offers" class="panel group">
+                	<ul class="side-nav">
+						<li><a href="#offers" title="">OFFERS</a></li>
+                    </ul><!--side-nav-->
+                    <div class="option" id="offers">
+					<fieldset>
+					<legend>OFFERS</legend>
+						<ul id="offers-list">
+							<li>
+								<h3>Manage All WP Sites from a Single Dashboard</h3>
+								<a href="http://9nl.pw/cnao">
+									<img width="150" height="150" src="<?php echo get_template_directory_uri(); ?>/images/manage-wp-290x290.jpg">
+								</a>
+							</li>
+							<li>
+								<h3>Coupon FASTSITE to save 20% on first payment!</h3>
+								<a href="http://9nl.pw/03p6">
+									<img width="150" height="150" src="<?php echo get_template_directory_uri(); ?>/images/wp-engin.jpg">
+								</a>
+							</li>
+							<li>
+								<h3>Every WP Theme on One Site</h3>
+								<a href="http://9nl.pw/km8a">
+									<img width="150" height="150" src="<?php echo get_template_directory_uri(); ?>/images/presscastle.png">
+								</a> 
+							</li>
+						</ul>
+					</fieldset>
+					</div>
+                </div><!--close offers-->
             </div><!--close content-->
             <div id="footer-meta" class="group">
             	<input name="save" type="submit" value="SAVE ALL" class="save" />
-                <a href="http://www.splashingpixels.com" title="Splashing Pixels" target="_blank" class="logo-link">Splashing Pixels</a>
+                <a href="http://splashingpixels.com" title="Splashing Pixels" target="_blank" class="logo-link">Splashing Pixels</a>
             </div><!--close footer-meta-->
         </form>
     </div><!--close wrap-->	

@@ -204,6 +204,10 @@
 	background-position:-306px 0;
 }
 
+#sp-panel #tabs li.offers a {
+	background-position:-408px 0;
+}
+
 #sp-panel #tabs li a:hover span {
 	color:#d11b73;
 }
@@ -226,6 +230,10 @@
 
 #sp-panel #tabs li.help a:hover {
 	background-position:-306px -68px;
+}
+
+#sp-panel #tabs li.offers a:hover {
+	background-position:-406px -68px;
 }
 
 #sp-panel #tabs li.ui-state-active a {
@@ -257,8 +265,27 @@
 	background-position:-306px -136px;
 }
 
+#sp-panel #tabs li.offers.ui-state-active a {
+	background-position:-406px -136px;
+}
+
 #sp-panel .ui-tabs .ui-tabs-hide {
      display: none;
+}
+
+#sp-panel ul#offers-list
+{
+	width:580px;
+}
+
+#sp-panel ul#offers-list li
+{
+	border: 1px solid #ccc;
+    display: inline;
+    float: left;
+    width: 274px;
+	text-align: center;
+	margin:5px;
 }
 
 #sp-panel #header-meta {
